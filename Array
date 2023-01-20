@@ -73,4 +73,3 @@ Model.Name = "gay"
 for i, v in pairs(playerArray) do
 	onPlayer(v)
 end
-end)
