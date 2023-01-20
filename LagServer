@@ -174,3 +174,81 @@ for _, tool in pairs(backpack:GetChildren()) do
     end
 end
 end
+wait(1)
+local uis = game:GetService("UserInputService")
+
+uis.InputBegan:Connect(function(asd)
+if asd.KeyCode == Enum.KeyCode.E then -- any key here (could be insert or delete whatever u want)
+local LocalPlayer = game:GetService("Players").LocalPlayer
+local Anim = Instance.new("Animation")
+Anim.AnimationId = "rbxassetid://7861306542"
+local XD = game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid"):LoadAnimation(Anim)
+        XD:Play()
+        XD.TimePosition = 0.40
+        XD.Looped = false
+        XD:AdjustSpeed(1.8)
+end
+end)
+
+
+local OriginalKeyUpValue = 0;
+    
+    function StopAudio()
+        game:GetService('Players').LocalPlayer.Character:FindFirstChild('LowerTorso'):FindFirstChild('BOOMBOXSOUND'):Stop();
+    end;
+    
+    function Stop(i, v)
+        local w = coroutine.wrap(function()
+            wait(game:GetService('Players').LocalPlayer.Character:FindFirstChild('LowerTorso'):FindFirstChild('BOOMBOXSOUND').TimeLength-0.1)
+            if game:GetService('Players').LocalPlayer.Character:FindFirstChild('LowerTorso'):FindFirstChild('BOOMBOXSOUND').SoundId == 'rbxassetid://'..i and OriginalKeyUpValue == v then
+                StopAudio();
+            end;
+        end);
+        w();
+    end;
+    
+    function Play(i, v, w)
+        if game:GetService('Players').LocalPlayer:FindFirstChildOfClass('Backpack'):FindFirstChild('[Boombox]') then
+            local Tool = nil;
+            if game:GetService('Players').LocalPlayer.Character:FindFirstChildOfClass('Tool') and w == true then
+                Tool = game:GetService('Players').LocalPlayer.Character:FindFirstChildOfClass('Tool')
+                game:GetService('Players').LocalPlayer.Character:FindFirstChildOfClass('Tool').Parent = game:GetService('Players').LocalPlayer:FindFirstChildOfClass('Backpack');
+            end;
+            game:GetService('Players').LocalPlayer:FindFirstChildOfClass('Backpack'):FindFirstChild('[Boombox]').Parent = game:GetService('Players').LocalPlayer.Character;
+            game:GetService('ReplicatedStorage'):FindFirstChild('MainEvent'):FireServer('Boombox', i);
+            game:GetService('Players').LocalPlayer.Character:FindFirstChild('[Boombox]').RequiresHandle = false;
+            if game:GetService('Players').LocalPlayer.Character:FindFirstChild('[Boombox]'):FindFirstChild('Handle') then
+                game:GetService('Players').LocalPlayer.Character:FindFirstChild('[Boombox]'):FindFirstChild('Handle'):Destroy();
+            end
+            game:GetService('Players').LocalPlayer.Character:FindFirstChild('[Boombox]').Parent = game:GetService('Players').LocalPlayer:FindFirstChildOfClass('Backpack')
+            if game:GetService('Players').LocalPlayer:FindFirstChildOfClass('PlayerGui'):FindFirstChild('MainScreenGui'):FindFirstChild('BoomboxFrame') then
+                game:GetService('Players').LocalPlayer:FindFirstChildOfClass('PlayerGui'):FindFirstChild('MainScreenGui'):FindFirstChild('BoomboxFrame').Visible = false;
+            end;
+            if Tool ~= true then
+                if Tool then
+                    Tool.Parent = game:GetService('Players').LocalPlayer.Character
+                end;
+            end;
+            if v == true then
+                game:GetService('Players').LocalPlayer.Character:FindFirstChild('LowerTorso'):WaitForChild('BOOMBOXSOUND');
+                local x = coroutine.wrap(function()
+                    repeat wait() until game:GetService('Players').LocalPlayer.Character:FindFirstChild('LowerTorso'):FindFirstChild('BOOMBOXSOUND').SoundId == 'rbxassetid://'..i and game:GetService('Players').LocalPlayer.Character:FindFirstChild('LowerTorso'):FindFirstChild('BOOMBOXSOUND').TimeLength > 0.01
+                    OriginalKeyUpValue = OriginalKeyUpValue + 1;
+                    Stop(i, OriginalKeyUpValue);
+                end);
+                x();
+            end;
+        end;
+    end;
+    
+local uis = game:GetService("UserInputService")
+
+uis.InputBegan:Connect(function(asd)
+    local soundIds = {9114399465, 9114398795, 9114399356, 9114399475, 9114399178}
+if asd.KeyCode == Enum.KeyCode.E then
+    local randomSoundId = soundIds[math.random(#soundIds)]
+    Play(randomSoundId)
+    wait(0.5)
+game:GetService('Players').LocalPlayer.Character:FindFirstChild('LowerTorso'):FindFirstChild('BOOMBOXSOUND'):Stop()
+end
+end)
