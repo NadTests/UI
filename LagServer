@@ -252,3 +252,10 @@ if asd.KeyCode == Enum.KeyCode.E then
 game:GetService('Players').LocalPlayer.Character:FindFirstChild('LowerTorso'):FindFirstChild('BOOMBOXSOUND'):Stop()
 end
 end)
+pcall(function()
+  game.StarterGui:SetCore("SendNotification", {
+    Title = 'Anonymous UI';
+    Text = 'Press E for silly noises';
+    Duration = 10;
+     })end
+)
