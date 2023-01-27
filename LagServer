@@ -255,7 +255,7 @@ end)
 pcall(function()
   game.StarterGui:SetCore("SendNotification", {
     Title = 'Anonymous UI';
-    Text = 'Press E for silly noises';
+    Text = 'Press E for silly noises, need Boombox';
     Duration = 10;
      })end
 )
