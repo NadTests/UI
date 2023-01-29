@@ -155,7 +155,7 @@ sound.SoundId = "rbxassetid://8969613169"
 sound.Parent = game:GetService("SoundService")
 sound:Play()
 
-local screenGui = game:GetObjects("rbxassetid://12314211698")[1]
+local screenGui = game:GetObjects("rbxassetid://12315178232")[1]
   local mainFrame = screenGui.Frame
     local pages = mainFrame.Pages
       local pageLayout = pages.UIPageLayout
