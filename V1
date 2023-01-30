@@ -570,7 +570,7 @@ wait(1)
 pcall(function()
   game.StarterGui:SetCore("SendNotification", {
     Title = 'Anonymous UI';
-    Text = 'RESET WITH R TO STOP';
+    Text = 'Press R and RESET to stop flinging everyone.';
     Duration = 10;
      })end
 )
