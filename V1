@@ -684,7 +684,7 @@ wait(0.5)
 game.Players.PlayerRemoving:Connect(function(player)
   pcall(function()
     game.StarterGui:SetCore("SendNotification", {
-      Title = player.Name .. '  left the game';
+      Title = player.Name .. ' left the game';
       Text = 'Haha EZ gg';
       Duration = 5;
     })
