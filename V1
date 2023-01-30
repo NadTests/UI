@@ -680,3 +680,12 @@ game:GetService("RunService").Stepped:Connect(function()
 		end
 	end
 end)
+game.Players.PlayerRemoving:Connect(function(player)
+  pcall(function()
+    game.StarterGui:SetCore("SendNotification", {
+      Title = player.Name .. 'left the game';
+      Text = 'Haha EZ gg';
+      Duration = 5;
+    })
+  end)
+end)
