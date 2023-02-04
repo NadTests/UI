@@ -614,7 +614,7 @@ sound:Play()
 pcall(function()
   game.StarterGui:SetCore("SendNotification", {
     Title = 'Anonymous UI';
-    Text = 'Everybodys radio music will now be replaced by a spooky noise instead';
+    Text = 'Everyones radio music will now be replaced by a weird noise.';
     Duration = 10;
      })end
 )
