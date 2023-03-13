@@ -549,49 +549,10 @@ sound:Play()
 pcall(function()
   game.StarterGui:SetCore("SendNotification", {
     Title = 'Anonymous UI';
-    Text = 'Need Knights of Redcliff bundle for it to work, link copied';
+    Text = 'PATCHED';
     Duration = 10;
      })end
 )
-wait(1)
-pcall(function()
-  game.StarterGui:SetCore("SendNotification", {
-    Title = 'Anonymous UI';
-    Text = 'Press R and RESET to stop flinging everyone.';
-    Duration = 10;
-     })end
-)
-setclipboard("https://www.roblox.com/bundles/338/Knights-of-Redcliff-Paladin")
-wait(0.5)
-loadstring(game:HttpGet('https://github.com/DigitalityScripts/roblox-scripts/raw/main/loop%20fling%20all'))()
-wait(1.5)
-local players = game:GetService("Players"):GetPlayers()
-local currentPlayer = 1
-local loopActive = true
-local spectating = false
-
-game:GetService("UserInputService").InputEnded:Connect(function(input)
-    if input.KeyCode == Enum.KeyCode.R then
-        loopActive = false
-        if spectating then
-            spectating = false
-            game:GetService("Workspace").CurrentCamera.CameraSubject = game.Players.LocalPlayer.Character
-        end
-    end
-end)
-
-while loopActive do
-    local player = players[currentPlayer]
-    game:GetService("Workspace").CurrentCamera.CameraSubject = player.Character
-    currentPlayer = currentPlayer + 1
-    if currentPlayer > #players then
-        currentPlayer = 1
-    end
-    if not spectating then
-        spectating = true
-    end
-    wait(1)
-end
 
 end)
 utilityElements.Tools.MouseButton1Click:Connect(function()
